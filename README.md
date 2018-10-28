@@ -1,4 +1,6 @@
 # SynoriqDateTimePicker
+>> It is a angular project which allow user to choose a date and time in real time of current month. You can change the month and time dynamically.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.2.
 
