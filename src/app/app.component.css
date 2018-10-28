@@ -1,0 +1,50 @@
+html,
+body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #d3d3d3;
+}
+
+a.active {
+    background-color: gray;
+}
+
+#calendar-container {
+    width: 462px;
+}
+
+.calendar-days {
+    width: 60px;
+    height: 60px;
+    background: #669999;
+    border: 3px solid #c2c2c2;
+}
+.width-20px{
+    width: 20px;
+}
+.inactive {
+    opacity: 0.5;
+}
+
+.selected {
+    background: peru;
+    opacity: 0.6;
+}
+
+.today {
+    color: red;
+}
+
+.reserved {
+    color: blueviolet;
+}
+.flex-container {
+  display: flex;
+}
+.flex-center
+{
+    display: -webkit-flex; /* Safari */
+    -webkit-align-items: center; /* Safari 7.0+ */
+    display: flex;
+    align-items: center;
+}
