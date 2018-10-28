@@ -1,8 +1,14 @@
         <div class='flex-container flex-center'>
           <div id='calendar-container' class="flex-container flex-column flex-center">
             <div>
-              <input type="text" name="" placeholder="Choose the date">
-              <button class="primary">Save</button>
+              <div class="height-20px"></div>
+              <form [formGroup]='dateForm' class="flex-container flex-center">
+                <input  class="form-control" type="text" formControlName = 'dateFrom' name="dateFrom" placeholder="Choose the date">
+                <div class="width-20px"></div>
+                <input  type="text" class="form-control" name="" placeholder="Choose the time">
+                <div class="width-20px"></div>
+                <button class="btn btn-success">Save</button>
+              </form>
             </div>
             <!-- Show Month And Year Arrow Keys -->
             <div class="height-20px"></div>
@@ -17,18 +23,18 @@
               <div class='fa fa-chevron-right ' (click)='nextMonth() '></div>
             </div>
             <div class="height-20px"></div>
-            <div class="flex-container">
-              <div class='calendar-days flex-container flex-center '>S</div>
-              <div class='calendar-days flex-container flex-center '>M</div>
-              <div class='calendar-days flex-container flex-center '>T</div>
-              <div class='calendar-days flex-container flex-center '>W</div>
-              <div class='calendar-days flex-container flex-center '>T</div>
-              <div class='calendar-days flex-container flex-center '>F</div>
-              <div class='calendar-days flex-container flex-center '>S</div>
+            <div class="adjust flex-container">
+              <div class='week-days flex-container flex-center '>S</div>
+              <div class='week-days flex-container flex-center '>M</div>
+              <div class='week-days flex-container flex-center '>T</div>
+              <div class='week-days flex-container flex-center '>W</div>
+              <div class='week-days flex-container flex-center '>T</div>
+              <div class='week-days flex-container flex-center '>F</div>
+              <div class='week-days flex-container flex-center '>S</div>
             </div>
             <div class="flex-container flex-wrap">
               <div *ngFor='let day of daysArr'>
-                <div class="calendar-days flex-container flex-center" [ngClass]="{'inactive ': !day,'today': todayCheck(day)}">{{day?.date()}}</div>
+                <div class="calendar-days flex-container flex-center" (click) = selectedDate(day) [ngClass]="{'inactive ': !day,'today': todayCheck(day)}">{{day?.date()}}</div>
               </div>
             </div>
           </div>

@@ -14,7 +14,12 @@ export class AppComponent implements OnInit {
   public isReserved = null;
 
   constructor(private fb: FormBuilder) {
-   
+   this.initDateForm();
+  }
+  public initDateForm(){
+  	return this.dateForm = this.fb.group({
+  		dateFrom: [null,Validators.required]
+  	})
   }
   //init
   public ngOnInit() {
@@ -50,5 +55,14 @@ export class AppComponent implements OnInit {
   public previousMonth() {
     this.date.subtract(1, 'M');
     this.daysArr = this.createCalendar(this.date);
+  }
+  //Select the day
+  public selectedDate(day) {
+    let dayFormatted = day.format('DD/MM/YYYY');
+    if (!this.dateForm.get('dateFrom').value) {
+      this.dateForm.get('dateFrom').patchValue(dayFormatted);
+    } else {
+      this.dateForm.get('dateFrom').patchValue(dayFormatted);
+    }
   }
 }
