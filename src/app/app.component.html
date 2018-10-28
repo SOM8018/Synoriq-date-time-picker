@@ -1,13 +1,19 @@
-
-
         <div class='flex-container flex-center'>
           <div id='calendar-container' class="flex-container flex-column flex-center">
+            <div>
+              <input type="text" name="" placeholder="Choose the date">
+              <button class="primary">Save</button>
+            </div>
+            <!-- Show Month And Year Arrow Keys -->
             <div class="height-20px"></div>
             <div class="flex-container flex-center-horz">
+              <!-- Left Arrow key -->
               <div class='fa fa-chevron-left ' (click)='previousMonth() '></div>
               <div class='width-20px '></div>
+              <!-- Month in 'MMMM' and Year in 'YYYY' -->
               <div>{{date.format('MMMM ')}} {{date.format('YYYY ')}}</div>
               <div class='width-20px '></div>
+              <!-- Right Arrow Keys -->
               <div class='fa fa-chevron-right ' (click)='nextMonth() '></div>
             </div>
             <div class="height-20px"></div>

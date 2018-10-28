@@ -1,4 +1,5 @@
 import { Component , OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 import * as moment from 'moment';
 @Component({
   selector: 'app-root',
@@ -7,12 +8,15 @@ import * as moment from 'moment';
 })
 export class AppComponent implements OnInit {
   title = 'synoriq-date-time-picker';
-   public date = moment();
+  public date = moment();
   public daysArr;
+  public dateForm: FormGroup;
+  public isReserved = null;
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
    
   }
+  //init
   public ngOnInit() {
     this.daysArr = this.createCalendar(this.date);
   }
@@ -36,5 +40,15 @@ export class AppComponent implements OnInit {
       return false;
     }
     return moment().format('L') === day.format('L');
+  }
+  //Function for nextMonth() right arrow '>'
+  public nextMonth() {
+    this.date.add(1, 'M');
+    this.daysArr = this.createCalendar(this.date);
+  }
+  //Function for previousMonth() Left arrow '<'
+  public previousMonth() {
+    this.date.subtract(1, 'M');
+    this.daysArr = this.createCalendar(this.date);
   }
 }
