@@ -1,5 +1,9 @@
 import { Component , OnInit, ViewEncapsulation } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
+import { AmazingTimePickerService } from 'amazing-time-picker';
+import { ToasterServiceService } from './toaster-service.service'
 import * as moment from 'moment';
 @Component({
   selector: 'app-root',
@@ -13,7 +17,7 @@ export class AppComponent implements OnInit {
   public dateForm: FormGroup;
   public isReserved = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private atp:AmazingTimePickerService, private toasterService:ToasterServiceService) {
    this.initDateForm();
   }
   public initDateForm(){
@@ -61,8 +65,22 @@ export class AppComponent implements OnInit {
     let dayFormatted = day.format('DD/MM/YYYY');
     if (!this.dateForm.get('dateFrom').value) {
       this.dateForm.get('dateFrom').patchValue(dayFormatted);
+      this.toasterService.Success("Succesfully Added Date "+ dayFormatted);
     } else {
       this.dateForm.get('dateFrom').patchValue(dayFormatted);
+      this.toasterService.Success("Succesfully Added Date "+ dayFormatted);
     }
+  }
+  //timepicker from amazing time picker service 
+  public open()
+  {
+  	const picker = this.atp.open();
+  	picker.afterClose().subscribe(time =>{
+  		
+  		this.toasterService.Success("Succesfully Added time"+ picker);
+  	})
+  }
+  public save(){
+  	this.toasterService.Success("Succesfully Added Date and Time");
   }
 }

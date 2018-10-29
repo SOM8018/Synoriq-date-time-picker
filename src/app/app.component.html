@@ -5,9 +5,9 @@
               <form [formGroup]='dateForm' class="flex-container flex-center">
                 <input  class="form-control" type="text" formControlName = 'dateFrom' name="dateFrom" placeholder="Choose the date">
                 <div class="width-20px"></div>
-                <input  type="text" class="form-control" name="" placeholder="Choose the time">
+                <input  atp-time-picker value="10:10" class="form-control" name="" placeholder="Choose the time">
                 <div class="width-20px"></div>
-                <button class="btn btn-success">Save</button>
+                <button class="btn btn-success" (click) = save() >Save</button>
               </form>
             </div>
             <!-- Show Month And Year Arrow Keys -->
@@ -37,5 +37,14 @@
                 <div class="calendar-days flex-container flex-center" (click) = selectedDate(day) [ngClass]="{'inactive ': !day,'today': todayCheck(day)}">{{day?.date()}}</div>
               </div>
             </div>
+            <div class="height-20px"></div>
+            <div class="height-20px"></div>
+            <div class="height-20px"></div>
+            <footer id="main-footer" class="bg-main text-white mt-5 p-5">
+              <div class="container">
+                  <p class="lead text-center">Made With <i class="fa fa-heart heartbeat" style="font-size:20px;color:red"></i> By Som</p> 
+              </div>
+            </footer>
           </div>
+           
         </div>
